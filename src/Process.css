@@ -1,0 +1,8 @@
+.tasks-wrapper {
+  display: flex;
+  padding: 15px;
+  border-radius: 15px;
+  background-color: sandybrown;
+  border: 1px solid black;
+  align-items: center;
+}
