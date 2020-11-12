@@ -3,9 +3,10 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import Appv1 from "./v1/App";
 import reportWebVitals from "./reportWebVitals";
+import Workspace from "./v2/Workspace";
 
 const Root = () => {
-  const [version, setVersion] = useState(null);
+  const [version, setVersion] = useState(2);
 
   if (version === null) {
     return (
@@ -16,6 +17,8 @@ const Root = () => {
     );
   } else if (version === 1) {
     return <Appv1 />;
+  } else if (version === 2) {
+    return <Workspace />;
   }
 };
 
