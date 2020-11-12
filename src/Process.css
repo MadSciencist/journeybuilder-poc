@@ -1,8 +1,7 @@
 .tasks-wrapper {
   display: flex;
   padding: 15px;
-  border-radius: 15px;
-  background-color: sandybrown;
-  border: 1px solid black;
+  border-radius: 10px;
+  background-color: d2d4d6;
   align-items: center;
 }
