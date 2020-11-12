@@ -5,7 +5,23 @@ import { PanZoom } from "react-easy-panzoom";
 function App() {
   return (
     <PanZoom>
-      <Workspace />
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          height: "100vh",
+        }}
+      >
+        <div style={{ position: "relative" }}>
+          <Workspace title={"First stage"} />
+        </div>
+        <div style={{ position: "relative", marginTop: 50 }}>
+          <Workspace title={"Second stage"} />
+        </div>
+        <div style={{ position: "relative", marginTop: 50 }}>
+          <Workspace title={"Third stage"} />
+        </div>
+      </div>
     </PanZoom>
   );
 }
