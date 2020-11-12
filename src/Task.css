@@ -32,14 +32,23 @@
   position: absolute;
   right: 10px;
   top: -30px;
-  font-weight: 700;
+  color: #4f4f4f;
 }
 
-.right-arrow-wrapper {
+.right-icons-wrapper {
+  position: absolute;
+  right: -70px;
+  top: 15px;
+  color: #4f4f4f;
+}
+
+.right-icons-wrapper-process {
   position: absolute;
   right: -55px;
-  top: -5px;
+  top: 45px;
+  color: #4f4f4f;
 }
+
 .arrow-right {
   width: 0;
   height: 0;

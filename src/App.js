@@ -1,4 +1,4 @@
-import "./App.css";
+import React from "react";
 import Workspace from "./Workspace";
 import { PanZoom } from "react-easy-panzoom";
 

@@ -6,6 +6,10 @@
   align-items: center;
 }
 
+.process {
+  box-sizing: border-box;
+}
+
 .process-wrapper {
   display: flex;
   padding: 35px;

@@ -27,21 +27,14 @@ const Task = ({
         </div>
         {selected && (
           <div className="remove-wrapper" onClick={() => onRemoveClick(id)}>
-            X
+            <i className="fas fa-trash la-lg" />
           </div>
         )}
         {selected && isLast && (
-          <div className="right-arrow-wrapper">
-            <div
-              className="arrow-right"
-              title="Add next task"
-              onClick={() => onAddClick(id)}
-            />
-            <div
-              className="arrow-right"
-              title="Add gateway"
-              onClick={() => onAddDecisionClick(id)}
-            />
+          <div className="right-icons-wrapper">
+            <div title="Add next task" onClick={() => onAddClick(id)}>
+              <i className="fas fa-arrow-circle-right fa-2x" />
+            </div>
           </div>
         )}
       </div>

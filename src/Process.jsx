@@ -57,31 +57,21 @@ const Process = ({
                 selected={task.selected}
                 isLast={idx === tasks.length - 1}
               />
-              {selected && (
-                <div
-                  className="remove-wrapper"
-                  onClick={() => onProcessRemove(id)}
-                >
-                  X
-                </div>
-              )}
-              {selected && isLast && (
-                <div className="right-arrow-wrapper">
-                  <div
-                    className="arrow-right"
-                    title="Add next task"
-                    onClick={() => onAddProcess(id)}
-                  />
-                  <div
-                    className="arrow-right"
-                    title="Add gateway"
-                    //onClick={() => onAddDecisionClick(id)}
-                  />
-                </div>
-              )}
             </>
           );
         })}
+        {selected && (
+          <div className="remove-wrapper" onClick={() => onProcessRemove(id)}>
+            <i className="fas fa-trash la-lg" />
+          </div>
+        )}
+        {selected && isLast && (
+          <div className="right-icons-wrapper-process">
+            <div title="Add next task" onClick={() => onAddProcess(id)}>
+              <i className="fas fa-arrow-circle-right fa-3x" />
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

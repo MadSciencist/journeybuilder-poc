@@ -15,8 +15,36 @@ const definition = [
         selected: false,
       },
       {
-        id: "Risk Assessment",
-        title: "Risk Assessment",
+        id: "Approve Risk",
+        title: "Approve Risk",
+        selected: false,
+      },
+      {
+        id: "Some Decision",
+        title: "Some Decision",
+        selected: false,
+        type: "decision",
+        outcomes: {
+          x: {
+            id: "Outcome 1",
+            title: "Outcome 1",
+            selected: false,
+          },
+          y: {
+            id: "Outcome 2",
+            title: "Outcome 2",
+            selected: false,
+          },
+          // z: {
+          //   id: "Outcome 3",
+          //   title: "Outcome 3",
+          //   selected: false,
+          // },
+        },
+      },
+      {
+        id: "Verify Entity",
+        title: "Verify Entity",
         selected: false,
       },
     ],
@@ -28,12 +56,12 @@ const definition = [
     tasks: [
       {
         id: "process2 Capture KYC Data",
-        title: "process2 Capture KYC Data",
+        title: "Capture KYC Data",
         selected: false,
       },
       {
-        id: "process2R isk Assessment",
-        title: "process2 Risk Assessment",
+        id: "Risk Assessment",
+        title: "Risk Assessment",
         selected: false,
       },
     ],
