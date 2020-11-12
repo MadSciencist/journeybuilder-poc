@@ -7,62 +7,62 @@ const definition = [
   {
     id: "process1",
     title: "Capture Initial Data",
-    selected: false,
+    active: false,
     tasks: [
       {
-        id: "Capture KYC Data",
-        title: "Capture KYC Data",
-        selected: false,
+        id: "Capture KYC",
+        title: "Capture KYC",
+        active: false,
       },
       {
         id: "Approve Risk",
         title: "Approve Risk",
-        selected: false,
+        active: false,
       },
       {
         id: "Some Decision",
         title: "Some Decision",
-        selected: false,
+        active: false,
         type: "decision",
         outcomes: {
           x: {
             id: "Outcome 1",
             title: "Outcome 1",
-            selected: false,
+            active: false,
           },
           y: {
             id: "Outcome 2",
             title: "Outcome 2",
-            selected: false,
+            active: false,
           },
           // z: {
           //   id: "Outcome 3",
           //   title: "Outcome 3",
-          //   selected: false,
+          //   active: false,
           // },
         },
       },
       {
         id: "Verify Entity",
         title: "Verify Entity",
-        selected: false,
+        active: false,
       },
     ],
   },
   {
     id: "process2",
     title: "process2",
-    selected: false,
+    active: false,
     tasks: [
       {
-        id: "process2 Capture KYC Data",
-        title: "Capture KYC Data",
-        selected: false,
+        id: "process2 Capture KYC",
+        title: "Capture KYC",
+        active: false,
       },
       {
         id: "Risk Assessment",
         title: "Risk Assessment",
-        selected: false,
+        active: false,
       },
     ],
   },
@@ -81,7 +81,7 @@ const Workspace = ({ title }) => {
     const tasksCopy = [...process.tasks];
     tasksCopy[taskIndx] = {
       ...task,
-      selected: !task.selected,
+      active: !task.active,
     };
 
     const processes = [...state];
@@ -99,7 +99,7 @@ const Workspace = ({ title }) => {
     const processes = [...state];
     processes[processIndex] = {
       ...process,
-      selected: !processes[processIndex].selected,
+      active: !processes[processIndex].active,
     };
     setState(processes);
   };
@@ -112,13 +112,13 @@ const Workspace = ({ title }) => {
     const processes = state.map((x) => {
       return {
         ...x,
-        selected: false,
+        active: false,
       };
     });
     processes.push({
       id: Math.random().toString(36).substring(7),
       title: "Change me",
-      selected: false,
+      active: false,
       tasks: [
         { id: Math.random().toString(36).substring(7), title: "Change me" },
       ],
@@ -133,14 +133,14 @@ const Workspace = ({ title }) => {
     const tasksCopy = process.tasks.map((t) => {
       return {
         ...t,
-        selected: false,
+        active: false,
       };
     });
 
     tasksCopy.push({
       id: Math.random().toString(36).substring(7),
       title: "Change me",
-      selected: false,
+      active: false,
     });
 
     const processes = [...state];
@@ -164,7 +164,17 @@ const Workspace = ({ title }) => {
     setState(processes);
   };
 
-  console.log(state);
+  const handleSortTasks = (processId, newState, sortable, store) => {
+    console.log(newState);
+    const process = state.find((x) => x.id === processId);
+    const processIndex = state.indexOf(process);
+    const processes = [...state];
+    processes[processIndex] = {
+      ...process,
+      tasks: newState.filter((x) => x),
+    };
+    setState(processes);
+  };
 
   return (
     <div style={{ width: "100%", height: "100%", marginTop: 50 }}>
@@ -184,7 +194,7 @@ const Workspace = ({ title }) => {
                   key={process.id}
                   id={process.id}
                   title={process.title}
-                  selected={process.selected}
+                  active={process.active}
                   tasks={process.tasks}
                   isLast={idx === state.length - 1}
                   onTaskSelected={handleTaskSelected}
@@ -193,6 +203,7 @@ const Workspace = ({ title }) => {
                   onProcessSelected={handleProcessSelected}
                   onProcessRemove={handleProcessRemove}
                   onAddProcess={handleAddProcess}
+                  sortTasks={handleSortTasks}
                 />
               </>
             );

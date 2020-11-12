@@ -1,5 +1,6 @@
 import React from "react";
 import Task from "./Task";
+import { ReactSortable } from "react-sortablejs";
 import "./Process.css";
 
 const Process = ({
@@ -7,13 +8,14 @@ const Process = ({
   title,
   tasks,
   isLast,
-  selected,
+  active,
   onTaskSelected,
   onTaskAdd,
   onTaskRemove,
   onProcessSelected,
   onProcessRemove,
   onAddProcess,
+  sortTasks,
 }) => {
   const handleThisClick = (ev) => {
     if (!ev.target.className.includes("process")) {
@@ -32,40 +34,50 @@ const Process = ({
       <div
         onClick={handleThisClick}
         className={`process task-inside tasks-wrapper ${
-          selected ? "task-active" : ""
+          active ? "task-active" : ""
         }`}
       >
         <span className="process-text">{title}</span>
-        {tasks.map((task, idx) => {
-          if (task.type === "decision") {
-            const decisionTasks = Object.keys(task.outcomes).map(
-              (key) => task.outcomes[key]
-            );
 
-            return <DecisionSplit decisionTasks={decisionTasks ?? []} />;
+        <ReactSortable
+          style={{ display: "flex", justifyContent: "center" }}
+          list={tasks}
+          //handle=".handle-wrapper"
+          setList={(newState, sortable, store) =>
+            sortTasks(id, newState, sortable, store)
           }
-          return (
-            <>
-              {idx > 0 && <span style={{ marginLeft: 5 }}>{"---->"}</span>}
-              <Task
-                key={task.id}
-                id={task.id}
-                title={task.title}
-                onClick={(taskId) => onTaskSelected(id, taskId)}
-                onRemoveClick={(taskId) => onTaskRemove(id, taskId)}
-                onAddClick={(taskId) => onTaskAdd(id, taskId)}
-                selected={task.selected}
-                isLast={idx === tasks.length - 1}
-              />
-            </>
-          );
-        })}
-        {selected && (
+        >
+          {tasks.map((task, idx) => {
+            // if (task.type === "decision") {
+            //   const decisionTasks = Object.keys(task.outcomes).map(
+            //     (key) => task.outcomes[key]
+            //   );
+
+            //   return <DecisionSplit decisionTasks={decisionTasks ?? []} />;
+            // }
+            return (
+              <>
+                {idx > 0 && <span style={{ marginLeft: 5 }}>{"---->"}</span>}
+                <Task
+                  key={task.id}
+                  id={task.id}
+                  title={task.title}
+                  onClick={(taskId) => onTaskSelected(id, taskId)}
+                  onRemoveClick={(taskId) => onTaskRemove(id, taskId)}
+                  onAddClick={(taskId) => onTaskAdd(id, taskId)}
+                  active={task.active}
+                  isLast={idx === tasks.length - 1}
+                />
+              </>
+            );
+          })}
+        </ReactSortable>
+        {active && (
           <div className="remove-wrapper" onClick={() => onProcessRemove(id)}>
             <i className="fas fa-trash la-lg" />
           </div>
         )}
-        {selected && isLast && (
+        {active && isLast && (
           <div className="right-icons-wrapper-process">
             <div title="Add next task" onClick={() => onAddProcess(id)}>
               <i className="fas fa-arrow-circle-right fa-3x" />

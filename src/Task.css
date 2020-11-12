@@ -35,6 +35,13 @@
   color: #4f4f4f;
 }
 
+.handle-wrapper {
+  position: absolute;
+  left: 0px;
+  top: -30px;
+  color: #4f4f4f;
+}
+
 .right-icons-wrapper {
   position: absolute;
   right: -70px;

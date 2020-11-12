@@ -4,7 +4,7 @@ import "./Task.css";
 const Task = ({
   title,
   id,
-  selected,
+  active,
   isLast,
   onClick,
   onAddClick,
@@ -17,7 +17,7 @@ const Task = ({
   };
 
   return (
-    <div style={style} className={`task ${selected ? "task-active" : ""}`}>
+    <div style={style} className={`task ${active ? "task-active" : ""}`}>
       <div className="task-inside">
         <div
           style={{ width: "100%", height: "100%" }}
@@ -25,12 +25,17 @@ const Task = ({
         >
           <span className="task-text">{title}</span>
         </div>
-        {selected && (
+        {/* {active && (
+          <div className="handle-wrapper" onClick={() => onRemoveClick(id)}>
+            <i className="fas fa-expand-arrows-alt la-lg" />
+          </div>
+        )} */}
+        {active && (
           <div className="remove-wrapper" onClick={() => onRemoveClick(id)}>
             <i className="fas fa-trash la-lg" />
           </div>
         )}
-        {selected && isLast && (
+        {active && isLast && (
           <div className="right-icons-wrapper">
             <div title="Add next task" onClick={() => onAddClick(id)}>
               <i className="fas fa-arrow-circle-right fa-2x" />
