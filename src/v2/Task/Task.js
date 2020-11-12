@@ -24,7 +24,7 @@ const Task = ({ id, title, onRemoveClick, onAddClick }) => {
             <div className="f-task-top-icons-wrapper">
               <i
                 title="Reorder"
-                className="fas fa-grip-lines-vertical la-lg f-task-icon-drag f-task-top-icon drag-handle"
+                className="fas fa-bacon la-lg f-task-icon-drag f-task-top-icon drag-handle"
               />
               <i
                 title="Properties"

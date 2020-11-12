@@ -29,17 +29,14 @@
   position: absolute;
   top: 50%;
   left: 50%;
+  min-width: 200px;
+  text-align: center;
 }
 
 .f-task-logo {
-  margin: 10px 10px;
-}
-
-.f-task-top-icons-wrapper {
   position: absolute;
-  right: 10px;
-  top: -30px;
-  color: #4f4f4f;
+  top: 10px;
+  left: 10px;
 }
 
 .f-task-top-icon:hover {
@@ -51,7 +48,14 @@
 }
 
 .f-task-icon-drag {
-  margin-right: 70px;
+  margin-right: 60px;
+}
+
+.f-task-top-icons-wrapper {
+  position: absolute;
+  right: 10px;
+  top: -30px;
+  color: #4f4f4f;
 }
 
 .f-task-left-icons-wrapper {
@@ -68,4 +72,9 @@
   right: -40px;
   top: 15px;
   color: #4f4f4f;
+}
+
+.ghost-task {
+  opacity: 0.5;
+  background: rgb(111, 255, 104);
 }

@@ -16,7 +16,7 @@ const Workspace = () => {
           marginLeft: "5rem",
         }}
       >
-        <Process />
+        <Process title={"Capture Data"} />
       </div>
     </PanZoom>
   );
