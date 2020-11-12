@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/journeybuilder-poc/static/css/main.b8e5f67a.chunk.css",
-    "main.js": "/journeybuilder-poc/static/js/main.6dbcaffe.chunk.js",
-    "main.js.map": "/journeybuilder-poc/static/js/main.6dbcaffe.chunk.js.map",
+    "main.css": "/journeybuilder-poc/static/css/main.cefb0fb3.chunk.css",
+    "main.js": "/journeybuilder-poc/static/js/main.0c10852d.chunk.js",
+    "main.js.map": "/journeybuilder-poc/static/js/main.0c10852d.chunk.js.map",
     "runtime-main.js": "/journeybuilder-poc/static/js/runtime-main.85c78119.js",
     "runtime-main.js.map": "/journeybuilder-poc/static/js/runtime-main.85c78119.js.map",
-    "static/js/2.8d39d649.chunk.js": "/journeybuilder-poc/static/js/2.8d39d649.chunk.js",
-    "static/js/2.8d39d649.chunk.js.map": "/journeybuilder-poc/static/js/2.8d39d649.chunk.js.map",
+    "static/js/2.d62df3a2.chunk.js": "/journeybuilder-poc/static/js/2.d62df3a2.chunk.js",
+    "static/js/2.d62df3a2.chunk.js.map": "/journeybuilder-poc/static/js/2.d62df3a2.chunk.js.map",
     "static/js/3.8faa04e0.chunk.js": "/journeybuilder-poc/static/js/3.8faa04e0.chunk.js",
     "static/js/3.8faa04e0.chunk.js.map": "/journeybuilder-poc/static/js/3.8faa04e0.chunk.js.map",
     "index.html": "/journeybuilder-poc/index.html",
-    "static/css/main.b8e5f67a.chunk.css.map": "/journeybuilder-poc/static/css/main.b8e5f67a.chunk.css.map",
-    "static/js/2.8d39d649.chunk.js.LICENSE.txt": "/journeybuilder-poc/static/js/2.8d39d649.chunk.js.LICENSE.txt"
+    "static/css/main.cefb0fb3.chunk.css.map": "/journeybuilder-poc/static/css/main.cefb0fb3.chunk.css.map",
+    "static/js/2.d62df3a2.chunk.js.LICENSE.txt": "/journeybuilder-poc/static/js/2.d62df3a2.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.85c78119.js",
-    "static/js/2.8d39d649.chunk.js",
-    "static/css/main.b8e5f67a.chunk.css",
-    "static/js/main.6dbcaffe.chunk.js"
+    "static/js/2.d62df3a2.chunk.js",
+    "static/css/main.cefb0fb3.chunk.css",
+    "static/js/main.0c10852d.chunk.js"
   ]
 }
