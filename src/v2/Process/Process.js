@@ -65,6 +65,7 @@ const Process = ({
   title,
   active,
   tasks,
+  decision,
   onProcessActive,
   onAddtask,
   onTaskRemove,
@@ -78,7 +79,9 @@ const Process = ({
         if (ev.target.className.includes("f-proc"))
           onProcessActive(stageId, id);
       }}
-      className={`f-proc-root ${active ? "f-proc-root-active" : ""}`}
+      className={`f-proc-root ${decision ? "f-proc-root-decision" : ""} ${
+        active ? "f-proc-root-active" : ""
+      }`}
     >
       <div className="f-proc-inner">
         <div className="f-proc-logo-wrapper">

@@ -4,7 +4,31 @@ import Process from "../Process";
 import { ReactSortable } from "react-sortablejs";
 import "./index.css";
 
-const ProcessArrowPair = ({ id, skipArrow, ...rest }) => {
+const ProcessArrowPair = ({ id, type, outcomes, skipArrow, ...rest }) => {
+  if (type === "decision") {
+    return (
+      <div style={{ display: "flex", alignItems: "center" }}>
+        {!skipArrow && <ProcessArrow key={`arr_${id}`} />}
+        <Process decision key={id} id={id} {...rest} />
+        <div style={{ marginLeft: 50 }}>
+          {outcomes?.map((outcome) => {
+            return (
+              <div key={outcome.id} style={{ marginBottom: 15 }}>
+                <Process
+                  {...rest}
+                  key={outcome.id}
+                  tasks={outcome.tasks}
+                  title={outcome.title}
+                  id={outcome.id}
+                />
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div style={{ display: "flex" }}>
       {!skipArrow && <ProcessArrow key={`arr_${id}`} />}
@@ -52,6 +76,8 @@ const Stage = ({
               id={process.id}
               title={process.title}
               active={process.active}
+              type={process.type}
+              outcomes={process.outcomes}
               onProcessAdd={onProcessAdd}
               onProcessRemove={onProcessRemove}
               onProcessActive={onProcessActive}

@@ -6,19 +6,22 @@ import reportWebVitals from "./reportWebVitals";
 import Workspace from "./v2/Workspace";
 
 const Root = () => {
-  const [version, setVersion] = useState(2);
+  const [version, setVersion] = useState(null);
 
   if (version === null) {
     return (
       <>
         <button onClick={() => setVersion(1)}>Version 1</button>
         <button onClick={() => setVersion(2)}>Version 2</button>
+        <button onClick={() => setVersion(3)}>Version 3</button>
+        <button onClick={() => setVersion(4)}>Version 4</button>
+        <button onClick={() => setVersion(5)}>Version 5</button>
       </>
     );
   } else if (version === 1) {
     return <Appv1 />;
-  } else if (version === 2) {
-    return <Workspace />;
+  } else {
+    return <Workspace dataSet={version - 1} />;
   }
 };
 
