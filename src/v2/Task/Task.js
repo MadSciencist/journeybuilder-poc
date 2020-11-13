@@ -5,6 +5,7 @@ const Task = ({
   stageId,
   processId,
   id,
+  decision,
   active,
   title,
   onAddtask,
@@ -12,7 +13,11 @@ const Task = ({
   onTaskActive,
 }) => {
   return (
-    <div className={`f-task-root ${active && "f-task-root-active"}`}>
+    <div
+      className={`f-task-root ${decision && "f-task-decision"} ${
+        active && "f-task-root-active"
+      }`}
+    >
       <div className="f-task-inner">
         <div
           style={{ width: "100%", height: "100%" }}

@@ -22,51 +22,93 @@ const initialStages = [
         title: "Second Process",
         tasks: [
           { id: 123, title: "Capture KYC Data" },
-          { id: 123444, title: "Risk Assessment" },
+          {
+            id: 534,
+            type: "decision",
+            title: "Decision",
+            outcomes: [
+              { id: 55666, title: "Outcome 1" },
+              { id: 5566654, title: "Outcome 2" },
+              { id: 6654, title: "Outcome 3" },
+            ],
+          },
+          { id: 663, title: "End Journey" },
         ],
       },
     ],
   },
   {
-    id: "stage2",
-    title: "Stage Two",
+    id: "Customer Checks",
+    title: "Customer Checks",
     processes: [
       {
-        id: "proc3",
-        title: "First Process",
+        id: "Screening",
+        title: "Screening",
         tasks: [
-          { id: 123, title: "Capture KYC Data" },
-          { id: 123444, title: "Risk Assessment" },
+          {
+            id: "Send for Screening",
+            title: "Send for Screening",
+          },
+          {
+            id: "Material Hits Present",
+            type: "decision",
+            title: "Material Hits Present",
+            outcomes: [
+              { id: 556266, title: "[Yes] Escalate & End Journey" },
+              { id: 231212, title: "[Else]" },
+            ],
+          },
+          {
+            id: "Screening Complete",
+            title: "Screening Complete",
+          },
         ],
       },
       {
-        id: "proc4",
-        title: "Second Process",
+        id: "Risk",
+        title: "Risk",
         tasks: [
-          { id: 123, title: "Capture KYC Data" },
-          { id: 123444, title: "Risk Assessment" },
+          {
+            id: "R12isk Assessment",
+            title: "Risk Assessment",
+          },
+          {
+            id: "12High Risk",
+            type: "decision",
+            title: "High Risk",
+            outcomes: [
+              { id: 5533666, title: "[Yes] Escalate & End Journey" },
+              { id: 2351112, title: "[Else]" },
+            ],
+          },
+          {
+            id: "Radomplete Request",
+            title: "Complete Request",
+          },
         ],
       },
     ],
   },
   {
-    id: "stage3",
-    title: "Stage Three",
+    id: "Final Review",
+    title: "Final Review",
     processes: [
       {
-        id: "proc3",
-        title: "First Process",
+        id: "Reviews",
+        title: "Reviews",
         tasks: [
-          { id: 123, title: "Capture KYC Data" },
-          { id: 123444, title: "Risk Assessment" },
-        ],
-      },
-      {
-        id: "proc4",
-        title: "Second Process",
-        tasks: [
-          { id: 123, title: "Capture KYC Data" },
-          { id: 123444, title: "Risk Assessment" },
+          { id: 123, title: "Onboarding Review" },
+          {
+            id: 123444,
+            title: "Additional Escalation Triggers",
+            type: "decision",
+            outcomes: [
+              { id: 55666, title: "[Yes] Compliance Review" },
+              { id: 556661, title: "[Else] Compliance Review" },
+            ],
+          },
+          { id: "8975653", title: "Downstream Integration" },
+          { id: "322", title: "Complete Journey" },
         ],
       },
     ],
@@ -256,7 +298,7 @@ const Workspace = () => {
       >
         {stages.map((stage, index) => {
           return (
-            <>
+            <React.Fragment key={stage.id}>
               {index > 0 && <StageArrow key={`arr_${stage.id}`} />}
               <Stage
                 key={stage.id}
@@ -272,7 +314,7 @@ const Workspace = () => {
                 onTaskRemove={handleTaskRemove}
                 onTaskActive={handleTaskActive}
               />
-            </>
+            </React.Fragment>
           );
         })}
       </PanZoom>

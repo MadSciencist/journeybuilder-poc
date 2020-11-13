@@ -6,12 +6,9 @@ const ProcessArrow = () => {
       className="drag-ignore"
       style={{
         width: 60,
-        height: "100%",
-        textAlign: "center",
         paddingLeft: 10,
         paddingRight: 10,
-        paddingTop: 50,
-        alignContent: "center",
+        alignSelf: "center",
       }}
     >
       <svg viewBox="0 0 160 200">

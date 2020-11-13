@@ -4,7 +4,47 @@ import { ReactSortable } from "react-sortablejs";
 import "./index.css";
 import TaskArrow from "./TaskArrow";
 
-const TaskArrowPair = ({ stageId, processId, id, skipArrow, ...rest }) => {
+const TaskArrowPair = ({
+  stageId,
+  processId,
+  id,
+  type,
+  outcomes,
+  skipArrow,
+  ...rest
+}) => {
+  if (type === "decision") {
+    return (
+      <div style={{ display: "flex", alignItems: "center" }}>
+        {!skipArrow && <TaskArrow key={`arr_${id}`} />}
+        <Task
+          decision
+          key={id}
+          stageId={stageId}
+          processId={processId}
+          id={id}
+          {...rest}
+        />
+        <div style={{ marginLeft: 50 }}>
+          {outcomes?.map((outcome) => {
+            return (
+              <div key={outcome.id} style={{ marginBottom: 15 }}>
+                <Task
+                  {...rest}
+                  key={outcome.id}
+                  title={outcome.title}
+                  stageId={stageId}
+                  processId={processId}
+                  id={outcome.id}
+                />
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div style={{ display: "flex" }}>
       {!skipArrow && <TaskArrow key={`arr_${id}`} />}
@@ -45,8 +85,9 @@ const Process = ({
           <i className="f-proc-logo fas fa-user la-lg" />
           <div className="f-proc-title">{title}</div>
         </div>
+        {/* justifyContent: "center" */}
         <ReactSortable
-          style={{ display: "flex", justifyContent: "center" }}
+          style={{ display: "flex", alignItems: "center" }}
           list={tasks}
           filter=".drag-ignore"
           handle=".drag-handle"
@@ -59,8 +100,10 @@ const Process = ({
               id={task.id}
               active={task.active}
               stageId={stageId}
+              outcomes={task.outcomes}
               processId={id}
               title={task.title}
+              type={task.type}
               onAddtask={onAddtask}
               onTaskRemove={onTaskRemove}
               onTaskActive={onTaskActive}

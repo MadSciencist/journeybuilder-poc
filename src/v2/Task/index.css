@@ -7,6 +7,13 @@
   color: #fff;
 }
 
+.f-task-decision {
+  background-color: #a9377f;
+  height: 120px;
+  width: 120px;
+  border-radius: 40px;
+}
+
 .f-task-root:hover {
   background-color: #536b77;
 }

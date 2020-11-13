@@ -16,6 +16,7 @@
   height: 100%;
   position: relative;
   cursor: pointer;
+  display: flex;
 }
 
 .f-proc-logo-wrapper {

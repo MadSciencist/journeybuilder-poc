@@ -3,7 +3,7 @@
   background-color: #ffffff;
   box-sizing: border-box;
   color: rgb(29, 29, 29);
-  border: 1px solid gray;
+  border: 1px dashed gray;
   padding: 50px 10px 20px 10px;
 }
 
