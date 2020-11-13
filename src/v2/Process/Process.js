@@ -1,34 +1,44 @@
-import React, { useState } from "react";
+import React from "react";
 import Task from "../Task";
 import { ReactSortable } from "react-sortablejs";
 import "./index.css";
 import TaskArrow from "./TaskArrow";
 
-const tasks = [
-  { id: 123, title: "Capture KYC Data" },
-  { id: 123444, title: "Risk Assessment" },
-  { id: 1544, title: "Uber Task" },
-];
-
-const TaskArrowPair = ({ id, title, skipArrow }) => {
+const TaskArrowPair = ({ stageId, processId, id, skipArrow, ...rest }) => {
   return (
     <div style={{ display: "flex" }}>
       {!skipArrow && <TaskArrow key={`arr_${id}`} />}
-      <Task key={id} id={id} title={title} />
+      <Task
+        key={id}
+        stageId={stageId}
+        processId={processId}
+        id={id}
+        {...rest}
+      />
     </div>
   );
 };
 
-const Process = ({ id, title }) => {
-  const [state, setState] = useState(tasks);
-  const [active, setActive] = useState(false);
-
+const Process = ({
+  stageId,
+  id,
+  title,
+  active,
+  tasks,
+  onProcessActive,
+  onAddtask,
+  onTaskRemove,
+  onTaskActive,
+  onProcessAdd,
+  onProcessRemove,
+}) => {
   return (
     <div
       onClick={(ev) => {
-        if (ev.target.className.includes("f-proc")) setActive(!active);
+        if (ev.target.className.includes("f-proc"))
+          onProcessActive(stageId, id);
       }}
-      className={`f-proc-root  ${active ? "f-proc-root-active" : ""}`}
+      className={`f-proc-root ${active ? "f-proc-root-active" : ""}`}
     >
       <div className="f-proc-inner">
         <div className="f-proc-logo-wrapper">
@@ -37,17 +47,23 @@ const Process = ({ id, title }) => {
         </div>
         <ReactSortable
           style={{ display: "flex", justifyContent: "center" }}
-          list={state}
+          list={tasks}
           filter=".drag-ignore"
           handle=".drag-handle"
           ghostClass="ghost-task"
-          setList={(items) => setState(items.filter((x) => x))}
+          setList={() => {}}
         >
-          {state.map((task, indx) => (
+          {tasks.map((task, indx) => (
             <TaskArrowPair
               key={task.id}
               id={task.id}
+              active={task.active}
+              stageId={stageId}
+              processId={id}
               title={task.title}
+              onAddtask={onAddtask}
+              onTaskRemove={onTaskRemove}
+              onTaskActive={onTaskActive}
               skipArrow={indx === 0}
             />
           ))}
@@ -55,7 +71,10 @@ const Process = ({ id, title }) => {
         {active && (
           <>
             <div className="f-proc-left-icons-wrapper">
-              <div title="Add previous task" onClick={() => {}}>
+              <div
+                title="Add previous task"
+                onClick={() => onProcessAdd(stageId, id)}
+              >
                 <i className="fas fa-arrow-circle-left fa-2x" />
               </div>
             </div>
@@ -79,10 +98,14 @@ const Process = ({ id, title }) => {
               <i
                 title="Remove"
                 className="fas fa-trash la-lg f-task-top-icon"
+                onClick={() => onProcessRemove(stageId, id)}
               />
             </div>
             <div className="f-proc-right-icons-wrapper">
-              <div title="Add next task" onClick={() => {}}>
+              <div
+                title="Add next task"
+                onClick={() => onProcessAdd(stageId, id)}
+              >
                 <i className="fas fa-arrow-circle-right fa-2x" />
               </div>
             </div>
