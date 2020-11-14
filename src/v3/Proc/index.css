@@ -8,7 +8,16 @@
 }
 
 .f3-proc-root-active {
-  border: 3px solid magenta;
+  border: 3px solid rgb(49, 49, 49);
+}
+
+.f3-proc-decision {
+  background-color: #a9377f;
+  height: 120px;
+  width: 120px;
+  border-radius: 40px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .f3-proc-inner {

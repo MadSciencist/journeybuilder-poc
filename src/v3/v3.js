@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Processes from "./Processes/Processes";
 import { PanZoom } from "react-easy-panzoom";
 import { useKeyPress } from "../useKeyPress";
+import "./v3.css";
 const randomId = () => Math.random().toString(36).substring(7);
 
 const tabs = [
@@ -15,39 +16,89 @@ const tabs = [
 
 const initialProcesses = [
   {
-    id: "first proc",
-    title: "first proc",
+    id: "Initiate Case",
+    title: "Initiate Case",
     tasks: [
       {
-        id: "R12isk Assessment",
-        title: "Risk Assessment",
+        id: "Capture Client Data",
+        title: "Capture Client Data",
       },
       {
-        id: "12High Risk",
-        type: "decision",
-        title: "High Risk",
-        outcomes: [
-          { id: 5533666, title: "[Yes] Escalate & End Journey" },
-          { id: 2351112, title: "[Else]" },
-        ],
-      },
-      {
-        id: "Radomplete Request",
-        title: "Complete Request",
+        id: "Sanctions Check",
+        title: "Sanctions Check",
       },
     ],
   },
   {
-    id: "sec proc",
-    title: "sec proc",
+    id: "Risk Assessment process",
+    title: "Risk Assessment",
     tasks: [
       {
-        id: "R12isk Assessment",
+        id: "3R12isk Assessment",
         title: "Risk Assessment",
       },
+    ],
+  },
+  {
+    id: "Evaluate Risk",
+    title: "Evaluate Risk",
+    type: "decision",
+    tasks: [],
+    outcomes: [
       {
-        id: "Radomplete Request",
-        title: "Complete Request",
+        id: "When High Risk",
+        title: "When High Risk",
+        tasks: [
+          {
+            id: "Review",
+            type: "decision",
+            title: "Review",
+            outcomes: [{ id: 5533666, title: "When yes:  End Journey" }],
+          },
+        ],
+      },
+      {
+        id: "Else",
+        title: "Else",
+        tasks: [
+          {
+            id: "Review",
+            title: "Do something",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: "Evaluate Sanctions",
+    title: "Evaluate Sanctions",
+    type: "decision",
+    tasks: [],
+    outcomes: [
+      {
+        id: "Match",
+        title: "When Match",
+        tasks: [
+          {
+            id: "Review",
+            type: "decision",
+            title: "Review",
+            outcomes: [
+              { id: 5533666, title: "When yes:  End Journey" },
+              { id: 5533666, title: "Else:  Send email" },
+            ],
+          },
+        ],
+      },
+      {
+        id: "Match",
+        title: "Else",
+        tasks: [
+          {
+            id: "Review",
+            title: "Review",
+          },
+        ],
       },
     ],
   },
@@ -136,6 +187,7 @@ const V3 = () => {
   };
 
   const handleWrapperClick = (ev) => {
+    ev?.preventDefault();
     if (ev.target.className?.includes("zoomable-area")) {
       unselectAll();
     }
@@ -161,6 +213,11 @@ const V3 = () => {
               className="zoomable-area"
               style={{ height: "100%", width: "100%" }}
               disableDoubleClickZoom
+              enableBoundingBox
+              boundaryRatioVertical={0.8}
+              boundaryRatioHorizontal={0.8}
+              autoCenter
+              noStateUpdate
               preventPan={() => shiftPress}
             >
               <Processes

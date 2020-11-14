@@ -4,12 +4,19 @@ import { ReactSortable } from "react-sortablejs";
 import "./index.css";
 import Task from "../Task";
 
-const TaskArrowPair = ({ id, type, outcomes, skipArrow, ...rest }) => {
+const TaskArrowPair = ({ id, type, title, outcomes, skipArrow, ...rest }) => {
   if (type === "decision") {
     return (
-      <div style={{ display: "flex", alignItems: "center" }}>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
         {!skipArrow && <TaskArrow key={`arr_${id}`} />}
-        <Task decision key={id} id={id} {...rest} />
+        {/* <Task decision key={id} id={id} {...rest} /> */}
+        <span>Condition: {title}</span>
         <div style={{ marginLeft: 50 }}>
           {outcomes?.map((outcome) => {
             return (
@@ -30,9 +37,9 @@ const TaskArrowPair = ({ id, type, outcomes, skipArrow, ...rest }) => {
   }
 
   return (
-    <div style={{ display: "flex" }}>
+    <div style={{ display: "flex", alignItems: "center" }}>
       {!skipArrow && <TaskArrow key={`arr_${id}`} />}
-      <Task key={id} id={id} {...rest} />
+      <Task key={id} title={title} id={id} {...rest} />
     </div>
   );
 };
@@ -42,6 +49,7 @@ const Proc = ({
   title,
   tasks,
   active,
+  decision,
   onActive,
   onAddtask,
   onTaskRemove,
@@ -54,7 +62,9 @@ const Proc = ({
           onActive(id);
         }
       }}
-      className={`f3-proc-root  ${active ? "f3-proc-root-active" : ""}`}
+      className={`f3-proc-root  ${decision && "f3-proc-decision"} ${
+        active ? "f3-proc-root-active" : ""
+      }`}
     >
       <div className="f3-proc-inner">
         <div className="f3-proc-logo-wrapper">
@@ -70,6 +80,7 @@ const Proc = ({
           list={tasks}
           filter=".drag-ignore"
           handle=".drag-handle"
+          ghostClass="ghost-task"
           setList={() => {}}
         >
           {tasks.map((task, indx) => (

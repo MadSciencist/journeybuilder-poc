@@ -7,7 +7,7 @@ import Workspace from "./v2/Workspace";
 import V3 from "./v3/v3";
 
 const Root = () => {
-  const [version, setVersion] = useState(10);
+  const [version, setVersion] = useState(null);
 
   if (version === null) {
     return (
