@@ -1,0 +1,38 @@
+.f3-proc-root {
+  border-radius: 5px;
+  background-color: #ffffff;
+  box-sizing: border-box;
+  color: rgb(29, 29, 29);
+  border: 1px dashed gray;
+  padding: 50px 10px 20px 10px;
+}
+
+.f3-proc-root-active {
+  border: 3px solid magenta;
+}
+
+.f3-proc-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  cursor: pointer;
+}
+
+.f3-proc-logo-wrapper {
+  position: absolute;
+  top: -50px;
+  left: -10px;
+}
+
+.f3-proc-logo {
+  margin: 10px 10px;
+}
+
+.f3-proc-title {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  left: 40px;
+  top: 6px;
+  min-width: 300px;
+}
