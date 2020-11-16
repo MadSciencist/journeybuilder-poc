@@ -5,7 +5,7 @@
   background-color: #f6f6f6;
   border: dashed 2px #1260ae;
   width: 400px;
-  min-height: 100px;
+  height: 100px;
 }
 
 .diag-stage-root:hover {
@@ -30,4 +30,15 @@
   position: absolute;
   top: 12px;
   left: 12px;
+}
+
+.diag-stage-bottom-icons-wrapper {
+  position: absolute;
+  bottom: -45px;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.diag-stage-bottom-icons-wrapper:hover {
+  color: #054d96;
 }
