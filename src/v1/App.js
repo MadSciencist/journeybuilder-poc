@@ -2,7 +2,7 @@ import React from "react";
 import Workspace from "./Workspace";
 import { PanZoom } from "react-easy-panzoom";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
-import { useKeyPress } from "../useKeyPress";
+import useKeyPress from "../useKeyPress";
 
 function App() {
   const shiftPress = useKeyPress("Shift");

@@ -1,0 +1,33 @@
+.diag-stage-root {
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: #1260ae;
+  background-color: #f6f6f6;
+  border: dashed 2px #1260ae;
+  width: 400px;
+  min-height: 100px;
+}
+
+.diag-stage-root:hover {
+  background-color: #ededed;
+}
+
+.diag-stage-root-selected {
+  border: 3px solid #1260ae;
+}
+
+.diag-stage-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  cursor: pointer;
+}
+
+.diag-stage-title {
+  min-width: 200px;
+  font-size: 15px;
+  font-weight: 500;
+  position: absolute;
+  top: 12px;
+  left: 12px;
+}

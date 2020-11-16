@@ -4,10 +4,11 @@ import "./index.css";
 import Appv1 from "./v1/App";
 import reportWebVitals from "./reportWebVitals";
 import Workspace from "./v2/Workspace";
+import Workspace4 from "./v4/workspace";
 import V3 from "./v3/v3";
 
 const Root = () => {
-  const [version, setVersion] = useState(null);
+  const [version, setVersion] = useState(20);
 
   if (version === null) {
     return (
@@ -18,12 +19,15 @@ const Root = () => {
         <button onClick={() => setVersion(4)}>Version 4</button>
         <button onClick={() => setVersion(5)}>Version 5</button>
         <button onClick={() => setVersion(10)}>Draggable stages</button>
+        <button onClick={() => setVersion(20)}>Another</button>
       </>
     );
   } else if (version === 1) {
     return <Appv1 />;
   } else if (version === 10) {
     return <V3 />;
+  } else if (version === 20) {
+    return <Workspace4 />;
   } else {
     return <Workspace dataSet={version - 1} />;
   }

@@ -3,7 +3,7 @@ import { TabContent, TabPane, Nav, NavItem, NavLink, Row } from "reactstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Processes from "./Processes/Processes";
 import { PanZoom } from "react-easy-panzoom";
-import { useKeyPress } from "../useKeyPress";
+import useKeyPress from "../useKeyPress";
 import "./v3.css";
 const randomId = () => Math.random().toString(36).substring(7);
 

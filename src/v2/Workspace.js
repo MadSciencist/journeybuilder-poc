@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { PanZoom } from "react-easy-panzoom";
-import { useKeyPress } from "../useKeyPress";
+import useKeyPress from "../useKeyPress";
 import Stage from "./Stage/Stage";
 import StageArrow from "./StageArrow";
 import {
