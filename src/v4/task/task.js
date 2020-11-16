@@ -5,7 +5,7 @@ const Task = ({
   processId,
   id,
   isSelected,
-  title,
+  name,
   onAddtask,
   onTaskRemove,
   onTaskActive,
@@ -20,7 +20,7 @@ const Task = ({
           onClick={() => onTaskActive && onTaskActive(processId, id)}
         >
           <i className="diag-task-logo fas fa-user la-lg" />
-          <div className="diag-task-title">{title}</div>
+          <div className="diag-task-title">{name}</div>
         </div>
         {isSelected && (
           <>

@@ -1,8 +1,16 @@
-import React from "react";
+import React, { Fragment } from "react";
 import clsx from "clsx";
+import Process from "../process";
 import "./stage.css";
 
-const Stage = ({ id, title, isSelected, onStageSelect, onStageAdd }) => {
+const Stage = ({
+  id,
+  name,
+  isSelected,
+  onStageSelect,
+  onStageAdd,
+  processes,
+}) => {
   const handleSelect = (ev) => {
     ev.preventDefault();
     if (typeof onStageSelect === "function") onStageSelect(id);
@@ -22,7 +30,22 @@ const Stage = ({ id, title, isSelected, onStageSelect, onStageAdd }) => {
     >
       <div className="diag-stage-inner">
         <div onClick={handleSelect}>
-          <div className="diag-stage-title">{title}</div>
+          <div className="diag-stage-title">{name}</div>
+        </div>
+        <div className="diag-stage-processes">
+          {processes?.map((process, index) => (
+            <Fragment key={process.id}>
+              {index > 0 && (
+                <div key={`arr_${process.id}`} style={{ marginLeft: 20 }}></div>
+              )}
+              <Process
+                key={process.id}
+                id={process.id}
+                name={process.name}
+                tasks={process.tasks}
+              />
+            </Fragment>
+          ))}
         </div>
         {isSelected && (
           <div

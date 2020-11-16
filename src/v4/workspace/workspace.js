@@ -4,17 +4,23 @@ import useKeyPress from "../../useKeyPress";
 import VerticalArrow from "./VerticalArrow";
 import Stage from "../stage";
 import "./index.css";
-import { data } from "../data";
+import { data, commercialOnbData } from "../data";
+import Gridliness from "../gridliness/gridliness";
 
 const randomId = () => Math.random().toString(36).substring(7);
 
 const Workspace = () => {
   const shiftPress = useKeyPress("Control");
-  const [stages, setStages] = useState(data);
+  const [stages, setStages] = useState(commercialOnbData);
 
   const handleWrapperClick = (ev) => {
     ev?.preventDefault();
-    if (ev.target.className?.includes("diag-zoomable-area")) {
+
+    const { className } = ev.target;
+    if (
+      typeof className === "string" &&
+      className.includes("diag-gridliness")
+    ) {
       unselectAll();
     }
   };
@@ -48,8 +54,9 @@ const Workspace = () => {
   return (
     <div
       onClick={handleWrapperClick}
-      style={{ width: "100%", height: "100vh", backgroundColor: "#9ef7f3" }}
+      style={{ width: "100%", height: "100vh" }}
     >
+      <Gridliness />
       <PanZoom
         className="diag-zoomable-area"
         style={{ height: "100%", width: "100%" }}
@@ -58,21 +65,20 @@ const Workspace = () => {
         autoCenter
         preventPan={() => shiftPress}
       >
-        {stages?.map((stage, index) => {
-          return (
-            <Fragment key={stage.id}>
-              {index > 0 && <VerticalArrow key={`arr_${stage.id}`} />}
-              <Stage
-                key={stage.id}
-                id={stage.id}
-                title={stage.title}
-                isSelected={stage.isSelected}
-                onStageSelect={handleStageSelect}
-                onStageAdd={handleStageAdd}
-              />
-            </Fragment>
-          );
-        })}
+        {stages?.map((stage, index) => (
+          <Fragment key={stage.id}>
+            {index > 0 && <VerticalArrow key={`arr_${stage.id}`} />}
+            <Stage
+              key={stage.id}
+              id={stage.id}
+              name={stage.name}
+              isSelected={stage.isSelected}
+              processes={stage.processes}
+              onStageSelect={handleStageSelect}
+              onStageAdd={handleStageAdd}
+            />
+          </Fragment>
+        ))}
       </PanZoom>
     </div>
   );
